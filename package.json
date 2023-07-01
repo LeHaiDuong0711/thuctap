@@ -1,0 +1,29 @@
+{
+  "name": "fruitshops",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.4",
+    "ajax": "^0.0.3",
+    "ajax-request": "^1.2.3",
+    "bootstrap": "^5.2.3",
+    "chart.js": "^4.3.0",
+    "font-awesome": "^4.7.0",
+    "highcharts": "^11.1.0",
+    "jquery": "^3.6.4",
+    "jquery-confirm": "^3.3.4",
+    "moment": "^2.29.4",
+    "node_module": "^0.0.0",
+    "notifyjs": "^3.0.0",
+    "paginationjs": "^2.6.0",
+    "tinymce": "^6.4.2",
+    "underscore": "^1.13.6"
+  }
+}

@@ -1,0 +1,478 @@
+{
+    "​​province": [
+        {
+            "name": "Hà Nội",
+            "id": "HN",
+            "population": 8236000,
+            "acreage": 3323,
+            "district": [
+                {
+                    "name": "Ba Đình",
+                    "population": 247100,
+                    "acreage": 9.224
+                },
+                {
+                    "name": "Cầu Giấy",
+                    "population": 266800,
+                    "acreage": 12.04
+                },
+                {
+                    "name": "Đống Đa",
+                    "population": 420900,
+                    "acreage": 9.96
+                },
+                {
+                    "name": "Hai Bà Trưng",
+                    "population": 318000,
+                    "acreage": 10.09
+                },
+                {
+                    "name": "Hoàn Kiếm",
+                    "population": 160600,
+                    "acreage": 5.29
+                },
+                {
+                    "name": "Hoàng idi",
+                    "population": 401500,
+                    "acreage": 41.04
+                },
+                {
+                    "name": "Long Biên",
+                    "population": 291900,
+                    "acreage": 60.38
+                },
+                {
+                    "name": "Nam Từ Liêm",
+                    "population": 282500,
+                    "acreage": 32.28
+                },
+                {
+                    "name": "Tây Hồ",
+                    "population": 168800,
+                    "acreage": 24.57
+                },
+                {
+                    "name": "Thanh Xuân",
+                    "population": 285400,
+                    "acreage": 9.11
+                }
+            ]
+        },
+        {
+            "name": "TP. Hồ Chí Minh",
+            "id": "HCM",
+            "population": 8520000,
+            "acreage": 2095,
+            "district": [
+                {
+                    "name": "Quận 1",
+                    "population": 193632,
+                    "acreage": 7.7
+                },
+                {
+                    "name": "Quận 2",
+                    "population": 197827,
+                    "acreage": 49
+                },
+                {
+                    "name": "Quận 3",
+                    "population": 189854,
+                    "acreage": 4
+                },
+                {
+                    "name": "Quận 4",
+                    "population": 186727,
+                    "acreage": 4.18
+                },
+                {
+                    "name": "Quận 5",
+                    "population": 178615,
+                    "acreage": 4.27
+                },
+                {
+                    "name": "Quận 6",
+                    "population": 270559,
+                    "acreage": 7.19
+                },
+                {
+                    "name": "Quận 7",
+                    "population": 310178,
+                    "acreage": 35.7
+                },
+                {
+                    "name": "Quận 8",
+                    "population": 447713,
+                    "acreage": 19.18
+                },
+                {
+                    "name": "Quận 9",
+                    "population": 290394,
+                    "acreage": 114.08
+                },
+                {
+                    "name": "Quận 10",
+                    "population": 238558,
+                    "acreage": 5.72
+                },
+                {
+                    "name": "Quận 11",
+                    "population": 223189,
+                    "acreage": 5.14
+                },
+                {
+                    "name": "Quận 12",
+                    "population": 510326,
+                    "acreage": 52.78
+                },
+                {
+                    "name": "Bình Tân",
+                    "population": 764200,
+                    "acreage": 52.8
+                },
+                {
+                    "name": "Bình Thạnh",
+                    "population": 507493,
+                    "acreage": 20.76
+                },
+                {
+                    "name": "Gò Vấp",
+                    "population": 636563,
+                    "acreage": 19.74
+                },
+                {
+                    "name": "Phú Nhuận",
+                    "population": 182477,
+                    "acreage": 4.88
+                },
+                {
+                    "name": "Tân Bình",
+                    "population": 550970,
+                    "acreage": 22.35
+                },
+                {
+                    "name": "Tân Phú",
+                    "population": 464493,
+                    "acreage": 16.06
+                },
+                {
+                    "name": "Thủ Đức",
+                    "population": 831559,
+                    "acreage": 47.76
+                }
+            ]
+        },
+        {
+            "name": "An Giang",
+            "id": "AG",
+            "population": 2191800,
+            "acreage": 3536.75,
+            "district": [
+                {
+                    "name": "Thành phố Long Xuyên",
+                    "population": 367163,
+                    "acreage": 106.87
+                },
+                {
+                    "name": "Thành Phố Châu Đốc",
+                    "population": 157298,
+                    "acreage": 94.38
+                },
+                {
+                    "name": "Huyện An Phú",
+                    "population": 187303,
+                    "acreage": 160.81
+                },
+                {
+                    "name": "Huyện Châu Phú",
+                    "population": 118035,
+                    "acreage": 146.05
+                },
+                {
+                    "name": "Huyện Chợ Mới",
+                    "population": 127686,
+                    "acreage": 268.56
+                },
+                {
+                    "name": "Huyện Phú Tân",
+                    "population": 109124,
+                    "acreage": 164.69
+                },
+                {
+                    "name": "Huyện Thoại Sơn",
+                    "population": 122560,
+                    "acreage": 285.32
+                },
+                {
+                    "name": "Huyện Tịnh Biên",
+                    "population": 114427,
+                    "acreage": 716.01
+                },
+                {
+                    "name": "Huyện Tri Tôn",
+                    "population": 91450,
+                    "acreage": 365.13
+                }
+            ]
+        },
+        {
+            "name": "Hòa Bình",
+            "id": "HB",
+            "population": 892000,
+            "acreage": 4749.1,
+            "district": [
+                {
+                    "name": "Thành Phố Hòa Bình",
+                    "population": 150000,
+                    "acreage": 4.82
+                },
+                {
+                    "name": "Huyện Đà Bắc",
+                    "population": 40800,
+                    "acreage": 1383.19
+                },
+                {
+                    "name": "Huyện Kim Bôi",
+                    "population": 79700,
+                    "acreage": 1234.86
+                },
+                {
+                    "name": "Huyện Lạc Sơn",
+                    "population": 55600,
+                    "acreage": 1546.23
+                },
+                {
+                    "name": "Huyện Lạc Thủy",
+                    "population": 41600,
+                    "acreage": 768.32
+                },
+                {
+                    "name": "Huyện idi Châu",
+                    "population": 64000,
+                    "acreage": 1932.37
+                },
+                {
+                    "name": "Huyện Tân Lạc",
+                    "population": 68500,
+                    "acreage": 1196.02
+                },
+                {
+                    "name": "Huyện Yên Thủy",
+                    "population": 75800,
+                    "acreage": 1189.61
+                }
+            ]
+        },
+        {
+            "name": "Sơn La",
+            "id": "SL",
+            "population": 1415000,
+            "acreage": 14174.4,
+            "district": [
+                {
+                    "name": "Thành phố Sơn La",
+                    "population": 150100,
+                    "acreage": 92.905
+                },
+                {
+                    "name": "Huyện A Mú Sung",
+                    "population": 49770,
+                    "acreage": 973.52
+                },
+                {
+                    "name": "Huyện Bắc Yên",
+                    "population": 69650,
+                    "acreage": 1273.81
+                },
+                {
+                    "name": "Huyện Mộc Châu",
+                    "population": 152100,
+                    "acreage": 1086.03
+                },
+                {
+                    "name": "Huyện idi Sơn",
+                    "population": 61800,
+                    "acreage": 1116.44
+                },
+                {
+                    "name": "Huyện Sông Mã",
+                    "population": 101700,
+                    "acreage": 1479.22
+                },
+                {
+                    "name": "Huyện Sốp Cộp",
+                    "population": 44100,
+                    "acreage": 879.71
+                },
+                {
+                    "name": "Huyện Thuận Châu",
+                    "population": 119900,
+                    "acreage": 1441.15
+                },
+                {
+                    "name": "Huyện Yên Châu",
+                    "population": 100110,
+                    "acreage": 1196.02
+                },
+                {
+                    "name": "Huyện Vân Hồ",
+                    "population": 68330,
+                    "acreage": 1428.45
+                }
+            ]
+        },
+        {
+            "name": "Điện Biên",
+            "id": "DB",
+            "population": 513000,
+            "acreage": 9562.9,
+            "district": [
+                {
+                    "name": "Thành phố Điện Biên Phủ",
+                    "population": 107000,
+                    "acreage": 62.31
+                },
+                {
+                    "name": "Huyện Điện Biên",
+                    "population": 85450,
+                    "acreage": 1366
+                },
+                {
+                    "name": "Huyện Điện Biên Đông",
+                    "population": 58240,
+                    "acreage": 1197.9
+                },
+                {
+                    "name": "Huyện Mường Ảng",
+                    "population": 44950,
+                    "acreage": 1329.5
+                },
+                {
+                    "name": "Huyện Mường Chà",
+                    "population": 64800,
+                    "acreage": 1743.5
+                },
+                {
+                    "name": "Huyện Mường Nhé",
+                    "population": 41200,
+                    "acreage": 2938.6
+                },
+                {
+                    "name": "Huyện Nậm Pồ",
+                    "population": 36460,
+                    "acreage": 750
+                },
+                {
+                    "name": "Huyện Tủa Chùa",
+                    "population": 57100,
+                    "acreage": 1822.4
+                },
+                {
+                    "name": "Huyện Tuần Giáo",
+                    "population": 68000,
+                    "acreage": 1772.7
+                }
+            ]
+        },
+        {
+            "name": "Lai Châu",
+            "id": "LC",
+            "population": 590000,
+            "acreage": 9068.8,
+            "district": [
+                {
+                    "name": "Thành phố Lai Châu",
+                    "population": 89000,
+                    "acreage": 154.79
+                },
+                {
+                    "name": "Huyện Mường Tè",
+                    "population": 93130,
+                    "acreage": 3811.5
+                },
+                {
+                    "name": "Huyện Nậm Nhùn",
+                    "population": 59600,
+                    "acreage": 948
+                },
+                {
+                    "name": "Huyện Phong Thổ",
+                    "population": 52710,
+                    "acreage": 1267.5
+                },
+                {
+                    "name": "Huyện Sìn Hồ",
+                    "population": 58480,
+                    "acreage": 1013.38
+                },
+                {
+                    "name": "Huyện Tam Đường",
+                    "population": 51730,
+                    "acreage": 1047
+                },
+                {
+                    "name": "Huyện Tân Uyên",
+                    "population": 61120,
+                    "acreage": 991.87
+                },
+                {
+                    "name": "Huyện Than Uyên",
+                    "population": 68960,
+                    "acreage": 1221.29
+                }
+            ]
+        },
+        {
+            "name": "Lào Cai",
+            "id": "LC",
+            "population": 664000,
+            "acreage": 6383.9,
+            "district": [
+                {
+                    "name": "Thành phố Lào Cai",
+                    "population": 214310,
+                    "acreage": 223.16
+                },
+                {
+                    "name": "Huyện Bắc Hà",
+                    "population": 84390,
+                    "acreage": 1021.5
+                },
+                {
+                    "name": "Huyện Bảo Thắng",
+                    "population": 62890,
+                    "acreage": 754.4
+                },
+                {
+                    "name": "Huyện Bảo Yên",
+                    "population": 56870,
+                    "acreage": 702.2
+                },
+                {
+                    "name": "Huyện Bát Xát",
+                    "population": 93550,
+                    "acreage": 1420.4
+                },
+                {
+                    "name": "Huyện Mường Khương",
+                    "population": 62550,
+                    "acreage": 832.2
+                },
+                {
+                    "name": "Huyện Sa Pa",
+                    "population": 68070,
+                    "acreage": 680.31
+                },
+                {
+                    "name": "Huyện Si id Cai",
+                    "population": 59190,
+                    "acreage": 552.3
+                },
+                {
+                    "name": "Huyện Văn Bàn",
+                    "population": 42690,
+                    "acreage": 872.3
+                }
+            ]
+        }
+    ]
+}
