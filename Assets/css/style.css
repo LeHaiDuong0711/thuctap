@@ -3082,7 +3082,6 @@ input[type="radio"].btn-properties:checked+label {
 }
 
 .input-group.form-group button {
-
   position: absolute;
   top: 50%;
   right: 10px;

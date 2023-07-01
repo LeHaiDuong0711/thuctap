@@ -194,10 +194,35 @@ a {
   margin-bottom: 10px;
   color: white;
 }
+.input-group.form-group button {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
 
+}
 .btn-add:hover {
   background-color: white;
   color: #00fc82;
+}
+.btn-showPass,
+.btn-hidePass {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  z-index: 5;
+
+}
+
+.btn-showPass i,
+.btn-hidePass i {
+  color: #000;
+
+}
+
+.group-password {
+  margin-top: 3px;
 }
 
 #search {

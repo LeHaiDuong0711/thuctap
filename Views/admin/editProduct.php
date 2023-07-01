@@ -7,7 +7,7 @@
     </div>
     <div class="row">
         <form method="post" enctype="multipart/form-data" id="editProductForm">
-            <div class="row">
+            <div class="row containerProductDetail">
 
                 <div class="col-lg-2">
                     <label for="idProduct" class="form-label">Mã Sản Phẩm</label>
@@ -85,9 +85,9 @@
                     <label for="descriptionProduct" class="form-label">Description</label>
                     <textarea class="form-control description" name="description" id="descriptionProduct" rows="15">
 
-      </textarea>
+                </textarea>
                 </div>
-                <!-- <div class="col-lg-12 mt-5 productProperty">
+                <div class="col-lg-12 mt-5 productProperty">
                     <label for="propertyProduct" class="form-label">Sản phẩm thuộc tính</label>
                     <button type="button" class="add-btn property">Thêm thuộc tính</button>
                     <div class="containerProperty row">
@@ -98,10 +98,10 @@
                     </div>
 
 
-                </div> -->
+                </div>
             </div>
             <div class="mt-5">
-                <table id="productPropertyTable" class="table bg-white rounded shadow-sm  table-hover table-bordered" hidden>
+                <table id="productPropertyTable" class="table bg-white rounded shadow-sm  table-hover table-bordered">
                     <thead id="titleListProduct">
                         <tr>
                             <th>#</th>
@@ -420,406 +420,521 @@
 
 
 
-        // $.ajax({
-        //     type: "get",
-        //     url: "admin.php?act=listProductProperty",
-        //     data: {
-        //         id: id
-        //     },
-        //     success: function(response) {
-        //         arr = response.split("##-##");
-        //         result = JSON.parse(arr[1]);
-        //         arrTitle = [];
-        //         isCheck = true;
-
-        
-               
-        //             result.forEach((value, index, array) => {
-        //                 keys = Object.keys(value);
-        //                 halfKey = keys.slice(keys.length / 2);
-        //                 halfKey = halfKey.slice(4);
-        //                 halfKey = halfKey.slice(0, -4);
-        //                 halfKey.forEach((item) => {
-        //                     if(arrTitle.includes(item)==false){
-        //                         arrTitle.push(item)
-        //                     }
-
-        //                 })
-
-        //             });
-
-                
+        $.ajax({
+            type: "get",
+            url: "admin.php?act=listProductProperty",
+            data: {
+                id: id
+            },
+            success: function(response) {
+                arr = response.split("##-##");
+                result = JSON.parse(arr[1]);
+                arrTitle = [];
+                temp = [];
+                property1 = {}
+                isCheck = true;
+                halfKey = [];
 
 
 
+                result.forEach((value, index, array) => {
 
-            
+                    keys = Object.keys(value);
+
+                    halfKey = keys.slice(keys.length / 2);
+                    halfKey = halfKey.slice(4);
+                    halfKey = halfKey.slice(0, -5);
+
+                    halfKey.forEach((item, index1) => {
+
+                        if (!arrTitle.includes(item)) {
+                            arrTitle.push(item);
+                        }
+
+                        if (temp.length > 0) {
+                            var title = temp.find(function(t) {
+                                return t[item] === value[item];
+                            });
+
+                            if (!title) {
+                                temp.push({
+                                    [item]: value[item]
+                                });
+                            }
+                        } else {
+                            temp.push({
+                                [item]: value[item]
+                            });
+                        }
 
 
-        //         // if (isCheck == true) {
-        //         //     indexTh = 1;
-        //         //     arrTitle.forEach((value) => {
-        //         //         isset = false;
 
-        //         //         $("#productPropertyTable thead th").each((index, item) => {
-        //         //             if ($(item).text() == value) {
-        //         //                 isset = true;
-        //         //                 indexTh = index;
-        //         //             }
-        //         //         });
-        //         //         if (isset == false) {
-        //         //             $("#productPropertyTable")
-        //         //                 .find("th")
-        //         //                 .eq(indexTh++)
-        //         //                 .after(`<th>` + value + `</th>`);
-        //         //         }
-        //         //     });
 
-                   
-        //         //     htmls = [];
 
-        //         //     for (let i = 0; i < result.length; i++) {
-        //         //         const row = $("<tr>");
-        //         //         row.attr("id", i + 1);
 
-        //         //         row.append('<td class="idProductProperty">' + (i + 1) + "</td>");
-        //         //         row.append('<td class="skuProductProperty">'+result[i]["SKU"] + "</td>");
-        //         //         arrTitle.forEach((value) => {
-        //         //             row.append(
-        //         //                 '<td class="' + value + '">' + result[i][value] + "</td>"
-        //         //             );
-        //         //         });
+                    });
 
-        //         //         row.append(
-        //         //             '<td class="priceProductProperty"><input type="number" class="form-control" value='+result[i]["price"]+' /></td>'
-        //         //         );
-        //         //         row.append(
-        //         //             '<td class="promotionProductProperty"><input type="number" class="form-control" value='+result[i]["promotion"]+' /></td>'
-        //         //         );
-        //         //         row.append(
-        //         //             '<td class="quantityProductProperty"><input type="number" class="form-control" value='+result[i]["quantity"]+' /></td>'
-        //         //         );
-        //         //         row.append(
-        //         //             ` <td>
-        //         //                 <div class="wrap">
+
+                })
+
+
+                temp.forEach(function(item) {
+                    for (var key in item) {
+                        property1[key] = property1[key] || [];
+                        property1[key].push(item[key]);
+                    }
+                });
+
+
+                halfKey.forEach((value, index, array) => {
+
+                    i = $(".tags-input-wrapper").length + 1;
+
+                    $(".containerProperty").append(
+                        '<div id="container' +
+                        i +
+                        '" class="row container"><input type="text" id="title' +
+                        i +
+                        '" value="' + value + '" class="titleProperty col-lg-2" placeholder="Thuộc tính ' +
+                        i +
+                        '"></div>'
+                    );
+                    $("#container" + i).append(
+                        '<input type="text" class="tag-input" id="tag-input' + i + '">'
+                    );
+                    $("#container" + i).append(
+                        '<button type="button" data-id="' +
+                        i +
+                        '" class="btn-remove removeProperty col-lg-1"><i class="far fa-trash-alt"></i></button>'
+                    );
+                    $("#container" + i).append(
+                        '<span class="text-bg-danger" id="error-tag' + i + '"></span>'
+                    );
+                    tagInput = new TagsInput({
+                        selector: "tag-input" + i,
+                        duplicate: false,
+                        max: 10,
+                    });
+
+                    if ($(".containerProperty").children().length > 0) {
+                        $(".create").html(
+                            '<button type="button" class="float-end btn-create"><i class="far fa-play-circle"></i></button>'
+                        );
+                    }
+
+
+
+
+
+
+
+                })
+
+
+                keys = Object.keys(property1);
+                keys.forEach((value2, index2, array2) => {
+                    // console.log(value2);
+                    property1[value2].forEach((value3, index3, array3) => {
+                        $('.titleProperty').each((index4, value4) => {
+
+                            
+                            if (value2 == $(value4).val()) {
+                                // tagInput.arr.push(value3)
+                                $($(value4).siblings('.tags-input-wrapper')).prepend('<span class="tag">' + value3 + '<a>×</a></span>')
+
+                            }
+                            
+                        })
+                        console.log(value2 == $('.titleProperty').val());
+                        if (value2 == value3) {
+
+                        }
+
+
+
+
+                    })
+
+
+
+
+
+
+
+
+
+                })
+
+
+
+
+
+
+
+                if (isCheck == true) {
+                    indexTh = 1;
+                    arrTitle.forEach((value) => {
+                        isset = false;
+
+                        $("#productPropertyTable thead th").each((index, item) => {
+                            if ($(item).text() == value) {
+                                isset = true;
+                                indexTh = index;
+                            }
+                        });
+                        if (isset == false) {
+                            $("#productPropertyTable")
+                                .find("th")
+                                .eq(indexTh++)
+                                .after(`<th>` + value + `</th>`);
+                        }
+                    });
+
+
+                    htmls = [];
+
+                    for (let i = 0; i < result.length; i++) {
+                        const row = $("<tr>");
+                        row.attr("id", i + 1);
+
+                        row.append('<td class="idProductProperty">' + (i + 1) + "</td>");
+                        row.append('<td class="skuProductProperty">' + result[i]["SKU"] + "</td>");
+                        arrTitle.forEach((value) => {
+                            row.append(
+                                '<td class="' + value + '">' + result[i][value] + "</td>"
+                            );
+                        });
+
+                        row.append(
+                            '<td class="priceProductProperty"><input type="number" class="form-control" value=' + result[i]["price"] + ' /></td>'
+                        );
+                        row.append(
+                            '<td class="promotionProductProperty"><input type="number" class="form-control" value=' + result[i]["promotion"] + ' /></td>'
+                        );
+                        row.append(
+                            '<td class="quantityProductProperty"><input type="number" class="form-control" value=' + result[i]["quantity"] + ' /></td>'
+                        );
+                        row.append(
+                            ` <td>
+                                <div class="wrap">
                     
-        //         //                 <div class="profile">
-        //         //                     <div class="image_product" id="avatar">
-        //         //                     <img id="avatar-image` +
-        //         //                             i +
-        //         //                             `" class="avatar_img" src="./../Assets/img/`+result[i]["image"]+`">
+                                <div class="profile">
+                                    <div class="image_product" id="avatar">
+                                    <img id="avatar-image` +
+                            i +
+                            `" class="avatar_img" src="./../Assets/img/` + result[i]["image"] + `">
                     
-        //         //                         <div class="avatar_upload">
-        //         //                             <label class="upload_label">Upload
-        //         //                                 <input type="file" id="upload" name="uploadImageAddProductProperty[` +
-        //         //                             i +
-        //         //                             `]" class="uploadImageAddProductProperty">
-        //         //                             </label>
-        //         //                         </div>
-        //         //                     </div>
-        //         //                 </div>
+                                        <div class="avatar_upload">
+                                            <label class="upload_label">Upload
+                                                <input type="file" id="upload" name="uploadImageAddProductProperty[` +
+                            i +
+                            `]" class="uploadImageAddProductProperty">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
                     
-        //         //             </div>
-        //         //                 </td>`
-        //         //         );
-        //         //         // row.append(
-        //         //         //     `  <td><button type="button" data-id="` +
-        //         //         //     i +
-        //         //         //     `" class="btn-remove removeProductProperty"><i class="far fa-trash-alt"></i></button><td>`
-        //         //         // );
-        //         //         htmls.push(row);
-        //         //     }
-        //         //     $("#listProductProperty").html(htmls);
+                            </div>
+                                </td>`
+                        );
+                        row.append(
+                            `  <td><button type="button" data-id="` +
+                            i +
+                            `" class="btn-remove removeProductProperty"><i class="far fa-trash-alt"></i></button><td>`
+                        );
+                        htmls.push(row);
+                    }
+                    $("#listProductProperty").html(htmls);
 
-        //         //     $(document).on("submit", "#addProductForm", function(e) {
-        //         //         e.preventDefault();
-        //         //         const productProperty = [];
-        //         //         $("#listProductProperty tr").each((index, item) => {
-        //         //             index += 1;
+                    $(document).on("submit", "#addProductForm", function(e) {
+                        e.preventDefault();
+                        const productProperty = [];
+                        $("#listProductProperty tr").each((index, item) => {
+                            index += 1;
 
-        //         //             const product = {
-        //         //                 sku: $("tr#" + index + " .skuProductProperty").text(),
-        //         //                 // image: $("tr#" + index + " .avatar_img").attr("src"),
-        //         //                 price: $("tr#" + index + " .priceProductProperty input").val(),
-        //         //                 promotion: $(
-        //         //                     "tr#" + index + " .promotionProductProperty input"
-        //         //                 ).val(),
-        //         //                 quantity: $(
-        //         //                     "tr#" + index + " .quantityProductProperty input"
-        //         //                 ).val(),
-        //         //             };
+                            const product = {
+                                sku: $("tr#" + index + " .skuProductProperty").text(),
+                                // image: $("tr#" + index + " .avatar_img").attr("src"),
+                                price: $("tr#" + index + " .priceProductProperty input").val(),
+                                promotion: $(
+                                    "tr#" + index + " .promotionProductProperty input"
+                                ).val(),
+                                quantity: $(
+                                    "tr#" + index + " .quantityProductProperty input"
+                                ).val(),
+                            };
 
-        //         //             const newObj = {};
+                            const newObj = {};
 
-        //         //             for (let i = 0; i < arrTitle.length; i++) {
-        //         //                 const title = arrTitle[i];
-        //         //                 const value = $("tr#" + index + " ." + title).text();
-        //         //                 newObj[title] = value;
-        //         //             }
+                            for (let i = 0; i < arrTitle.length; i++) {
+                                const title = arrTitle[i];
+                                const value = $("tr#" + index + " ." + title).text();
+                                newObj[title] = value;
+                            }
 
-        //         //             const newProduct = Object.assign({}, product, newObj);
+                            const newProduct = Object.assign({}, product, newObj);
 
-        //         //             productProperty.push(newProduct);
-        //         //         });
+                            productProperty.push(newProduct);
+                        });
 
-        //         //         data = new FormData(this);
-        //         //         productProperty.forEach(function(prod, index) {
-        //         //             for (var key in prod) {
-        //         //                 data.append(`product[${index}][${key}]`, prod[key]);
-        //         //             }
-        //         //         });
-        //         //         arrTitle.forEach((value, index) => {
-        //         //             data.append(`title[${index}]`, value);
-        //         //         });
-
-
-        //         //     });
-        //         // }
+                        data = new FormData(this);
+                        productProperty.forEach(function(prod, index) {
+                            for (var key in prod) {
+                                data.append(`product[${index}][${key}]`, prod[key]);
+                            }
+                        });
+                        arrTitle.forEach((value, index) => {
+                            data.append(`title[${index}]`, value);
+                        });
 
 
+                    });
+                }
 
 
 
 
-        //     },
-        // });
-
-        // $(document).on("click", ".add-btn.property", function() {
-        //     i = $(".tags-input-wrapper").length + 1;
-
-        //     $(".containerProperty").append(
-        //         '<div id="container' +
-        //         i +
-        //         '" class="row container"><input type="text" id="title' +
-        //         i +
-        //         '" class="titleProperty col-lg-2" placeholder="Thuộc tính ' +
-        //         i +
-        //         '"></div>'
-        //     );
-        //     $("#container" + i).append(
-        //         '<input type="text" class="tag-input" id="tag-input' + i + '">'
-        //     );
-        //     $("#container" + i).append(
-        //         '<button type="button" data-id="' +
-        //         i +
-        //         '" class="btn-remove removeProperty col-lg-1"><i class="far fa-trash-alt"></i></button>'
-        //     );
-        //     $("#container" + i).append(
-        //         '<span class="text-bg-danger" id="error-tag' + i + '"></span>'
-        //     );
-        //     tagInput = new TagsInput({
-        //         selector: "tag-input" + i,
-        //         duplicate: false,
-        //         max: 10,
-        //     });
-
-        //     if ($(".containerProperty").children().length > 0) {
-        //         $(".create").html(
-        //             '<button type="button" class="float-end btn-create"><i class="far fa-play-circle"></i></button>'
-        //         );
-        //     }
-        // });
-
-        //   $(document).on("blur", ".titleProperty", function () {
-        //     html = $(this);
-        //     value1 = $(this).val();
-        //     index1 = $(".titleProperty").index($(this));
-
-        //     $(".titleProperty").each(function (index, value) {
-        //       if (value1 == value.value && index != index1) {
-        //         html.siblings("span").html("Thuộc tính bị trùng lặp");
-        //         return false;
-        //       } else {
-        //         html.siblings("span").html("");
-        //       }
-        //     });
-        //   });
-        // property = [];
-        // $(document).on("keydown", ".tags-input-wrapper input", function(e) {
-        //     title = $(this).parent().siblings().val();
-
-        //     if (e.keyCode === 13) {
-        //         e.preventDefault();
-
-        //         check = false;
-        //         if (property.length <= 0) {
-        //             item = {
-        //                 title: title,
-        //                 value: tagInput.arr,
-        //             };
-
-        //             property.push(item);
-        //         } else {
-        //             for (i = 0; i < property.length; i++) {
-        //                 if (property[i].title == title) {
-        //                     check = true;
-        //                     break;
-        //                 }
-        //             }
-
-        //             if (check == false) {
-        //                 item1 = {
-        //                     title: title,
-        //                     value: tagInput.arr,
-        //                 };
-        //                 property.push(item1);
-        //             }
-        //         }
-        //         setTimeout(() => {}, 500);
-
-        //         // Thực hiện hành động khác ở đây
-        //     }
-        // });
 
 
-        // $(document).on("click", ".create", function() {
-        //     productProperty = [];
-        //     arrTitle = [];
-        //     isCheck = true;
+            },
+        });
 
-        //     $(".productProperty")
-        //         .children(".containerProperty")
-        //         .children(".container")
-        //         .each((index, item) => {
-        //             title = item.children[0].value;
-        //             $(".titleProperty").each((index1, item1) => {
-        //                 if (item1.value == title && index != index1) {
-        //                     isCheck = false;
-        //                     $(item.children[0]).focus();
-        //                 }
-        //             });
-        //             if (isCheck == true) {
-        //                 arrTitle.push(item.children[0].value);
-        //                 value = item.children[2].value;
-        //                 item2 = {
-        //                     title: title,
-        //                     value: value,
-        //                 };
-        //                 productProperty.push(item2);
-        //             }
-        //         });
+        $(document).on("click", ".add-btn.property", function() {
+            i = $(".tags-input-wrapper").length + 1;
 
-        //     if (isCheck == true) {
-        //         indexTh = 1;
-        //         productProperty.forEach((value) => {
-        //             isset = false;
+            $(".containerProperty").append(
+                '<div id="container' +
+                i +
+                '" class="row container"><input type="text" id="title' +
+                i +
+                '" class="titleProperty col-lg-2" placeholder="Thuộc tính ' +
+                i +
+                '"></div>'
+            );
+            $("#container" + i).append(
+                '<input type="text" class="tag-input" id="tag-input' + i + '">'
+            );
+            $("#container" + i).append(
+                '<button type="button" data-id="' +
+                i +
+                '" class="btn-remove removeProperty col-lg-1"><i class="far fa-trash-alt"></i></button>'
+            );
+            $("#container" + i).append(
+                '<span class="text-bg-danger" id="error-tag' + i + '"></span>'
+            );
+            tagInput = new TagsInput({
+                selector: "tag-input" + i,
+                duplicate: false,
+                max: 10,
+            });
 
-        //             $("#productPropertyTable thead th").each((index, item) => {
-        //                 if ($(item).text() == value.title) {
-        //                     isset = true;
-        //                     indexTh = index;
-        //                 }
-        //             });
-        //             if (isset == false) {
-        //                 $("#productPropertyTable")
-        //                     .find("th")
-        //                     .eq(indexTh++)
-        //                     .after(`<th>` + value.title + `</th>`);
-        //             }
-        //         });
+            if ($(".containerProperty").children().length > 0) {
+                $(".create").html(
+                    '<button type="button" class="float-end btn-create"><i class="far fa-play-circle"></i></button>'
+                );
+            }
+        });
+
+        $(document).on("blur", ".titleProperty", function() {
+            html = $(this);
+            value1 = $(this).val();
+            index1 = $(".titleProperty").index($(this));
+
+            $(".titleProperty").each(function(index, value) {
+                if (value1 == value.value && index != index1) {
+                    html.siblings("span").html("Thuộc tính bị trùng lặp");
+                    return false;
+                } else {
+                    html.siblings("span").html("");
+                }
+            });
+        });
+        property = [];
+        $(document).on("keydown", ".tags-input-wrapper input", function(e) {
+            title = $(this).parent().siblings().val();
+
+            if (e.keyCode === 13) {
+                e.preventDefault();
+
+                check = false;
+                if (property.length <= 0) {
+                    item = {
+                        title: title,
+                        value: tagInput.arr,
+                    };
+
+                    property.push(item);
+                } else {
+                    for (i = 0; i < property.length; i++) {
+                        if (property[i].title == title) {
+                            check = true;
+                            break;
+                        }
+                    }
+
+                    if (check == false) {
+                        item1 = {
+                            title: title,
+                            value: tagInput.arr,
+                        };
+                        property.push(item1);
+                    }
+                }
+                setTimeout(() => {}, 500);
+
+                // Thực hiện hành động khác ở đây
+            }
+        });
 
 
-        //         const resultArray = combineElements(productProperty, productProperty[0]);
-        //         htmls = [];
-        //         sku = 10000;
-        //         for (let i = 0; i < resultArray.length; i++) {
-        //             const row = $("<tr>");
-        //             row.attr("id", i + 1);
+        $(document).on("click", ".create", function() {
+            productProperty = [];
+            arrTitle = [];
+            isCheck = true;
 
-        //             row.append('<td class="idProductProperty">' + (i + 1) + "</td>");
-        //             row.append('<td class="skuProductProperty">#0' + (sku + 1) + "</td>");
-        //             arrTitle.forEach((value) => {
-        //                 row.append(
-        //                     '<td class="' + value + '">' + resultArray[i][value] + "</td>"
-        //                 );
-        //             });
+            $(".productProperty")
+                .children(".containerProperty")
+                .children(".container")
+                .each((index, item) => {
+                    title = item.children[0].value;
+                    $(".titleProperty").each((index1, item1) => {
+                        if (item1.value == title && index != index1) {
+                            isCheck = false;
+                            $(item.children[0]).focus();
+                        }
+                    });
+                    if (isCheck == true) {
+                        arrTitle.push(item.children[0].value);
+                        value = item.children[2].value;
+                        item2 = {
+                            title: title,
+                            value: value,
+                        };
+                        productProperty.push(item2);
+                    }
+                });
 
-        //             row.append(
-        //                 '<td class="priceProductProperty"><input type="number" class="form-control" value=0 /></td>'
-        //             );
-        //             row.append(
-        //                 '<td class="promotionProductProperty"><input type="number" class="form-control" value=0 /></td>'
-        //             );
-        //             row.append(
-        //                 '<td class="quantityProductProperty"><input type="number" class="form-control" value=0 /></td>'
-        //             );
-        //             row.append(
-        //                 ` <td>
-        //         <div class="wrap">
+            if (isCheck == true) {
+                indexTh = 1;
+                productProperty.forEach((value) => {
+                    isset = false;
+
+                    $("#productPropertyTable thead th").each((index, item) => {
+                        if ($(item).text() == value.title) {
+                            isset = true;
+                            indexTh = index;
+                        }
+                    });
+                    if (isset == false) {
+                        $("#productPropertyTable")
+                            .find("th")
+                            .eq(indexTh++)
+                            .after(`<th>` + value.title + `</th>`);
+                    }
+                });
+
+
+                const resultArray = combineElements(productProperty, productProperty[0]);
+                htmls = [];
+                sku = 10000;
+                for (let i = 0; i < resultArray.length; i++) {
+                    const row = $("<tr>");
+                    row.attr("id", i + 1);
+
+                    row.append('<td class="idProductProperty">' + (i + 1) + "</td>");
+                    row.append('<td class="skuProductProperty">#0' + (sku + 1) + "</td>");
+                    arrTitle.forEach((value) => {
+                        row.append(
+                            '<td class="' + value + '">' + resultArray[i][value] + "</td>"
+                        );
+                    });
+
+                    row.append(
+                        '<td class="priceProductProperty"><input type="number" class="form-control" value=0 /></td>'
+                    );
+                    row.append(
+                        '<td class="promotionProductProperty"><input type="number" class="form-control" value=0 /></td>'
+                    );
+                    row.append(
+                        '<td class="quantityProductProperty"><input type="number" class="form-control" value=0 /></td>'
+                    );
+                    row.append(
+                        ` <td>
+                <div class="wrap">
       
-        //         <div class="profile">
-        //             <div class="image_product" id="avatar">
-        //                <img id="avatar-image` +
-        //                 i +
-        //                 `" class="avatar_img">
+                <div class="profile">
+                    <div class="image_product" id="avatar">
+                       <img id="avatar-image` +
+                        i +
+                        `" class="avatar_img">
       
-        //                 <div class="avatar_upload">
-        //                     <label class="upload_label">Upload
-        //                         <input type="file" id="upload" name="uploadImageAddProductProperty[` +
-        //                 i +
-        //                 `]" class="uploadImageAddProductProperty">
-        //                     </label>
-        //                 </div>
-        //             </div>
-        //         </div>
+                        <div class="avatar_upload">
+                            <label class="upload_label">Upload
+                                <input type="file" id="upload" name="uploadImageAddProductProperty[` +
+                        i +
+                        `]" class="uploadImageAddProductProperty">
+                            </label>
+                        </div>
+                    </div>
+                </div>
       
-        //     </div>
-        //         </td>`
-        //             );
-        //             row.append(
-        //                 `  <td><button type="button" data-id="` +
-        //                 i +
-        //                 `" class="btn-remove removeProductProperty"><i class="far fa-trash-alt"></i></button><td>`
-        //             );
-        //             htmls.push(row);
-        //         }
-        //         $("#listProductProperty").html(htmls);
+            </div>
+                </td>`
+                    );
+                    row.append(
+                        `  <td><button type="button" data-id="` +
+                        i +
+                        `" class="btn-remove removeProductProperty"><i class="far fa-trash-alt"></i></button><td>`
+                    );
+                    htmls.push(row);
+                }
+                $("#listProductProperty").html(htmls);
 
-        //         $(document).on("submit", "#addProductForm", function(e) {
-        //             e.preventDefault();
-        //             const productProperty = [];
-        //             $("#listProductProperty tr").each((index, item) => {
-        //                 index += 1;
+                $(document).on("submit", "#addProductForm", function(e) {
+                    e.preventDefault();
+                    const productProperty = [];
+                    $("#listProductProperty tr").each((index, item) => {
+                        index += 1;
 
-        //                 const product = {
-        //                     sku: $("tr#" + index + " .skuProductProperty").text(),
-        //                     // image: $("tr#" + index + " .avatar_img").attr("src"),
-        //                     price: $("tr#" + index + " .priceProductProperty input").val(),
-        //                     promotion: $(
-        //                         "tr#" + index + " .promotionProductProperty input"
-        //                     ).val(),
-        //                     quantity: $(
-        //                         "tr#" + index + " .quantityProductProperty input"
-        //                     ).val(),
-        //                 };
+                        const product = {
+                            sku: $("tr#" + index + " .skuProductProperty").text(),
+                            // image: $("tr#" + index + " .avatar_img").attr("src"),
+                            price: $("tr#" + index + " .priceProductProperty input").val(),
+                            promotion: $(
+                                "tr#" + index + " .promotionProductProperty input"
+                            ).val(),
+                            quantity: $(
+                                "tr#" + index + " .quantityProductProperty input"
+                            ).val(),
+                        };
 
-        //                 const newObj = {};
+                        const newObj = {};
 
-        //                 for (let i = 0; i < arrTitle.length; i++) {
-        //                     const title = arrTitle[i];
-        //                     const value = $("tr#" + index + " ." + title).text();
-        //                     newObj[title] = value;
-        //                 }
+                        for (let i = 0; i < arrTitle.length; i++) {
+                            const title = arrTitle[i];
+                            const value = $("tr#" + index + " ." + title).text();
+                            newObj[title] = value;
+                        }
 
-        //                 const newProduct = Object.assign({}, product, newObj);
+                        const newProduct = Object.assign({}, product, newObj);
 
-        //                 productProperty.push(newProduct);
-        //             });
+                        productProperty.push(newProduct);
+                    });
 
-        //             data = new FormData(this);
-        //             productProperty.forEach(function(prod, index) {
-        //                 for (var key in prod) {
-        //                     data.append(`product[${index}][${key}]`, prod[key]);
-        //                 }
-        //             });
-        //             arrTitle.forEach((value, index) => {
-        //                 data.append(`title[${index}]`, value);
-        //             });
+                    data = new FormData(this);
+                    productProperty.forEach(function(prod, index) {
+                        for (var key in prod) {
+                            data.append(`product[${index}][${key}]`, prod[key]);
+                        }
+                    });
+                    arrTitle.forEach((value, index) => {
+                        data.append(`title[${index}]`, value);
+                    });
 
 
-        //         });
-        //     }
-        // });
+                });
+            }
+        });
 
 
         $(document).on('submit', "#editProductForm", function(e) {

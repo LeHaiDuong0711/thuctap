@@ -13,12 +13,16 @@
                             </div>
                             <input type="text" class="form-control" placeholder="username" name="username" required>
                         </div>
-                        <div class="input-group form-group">
+                        <div class="errUsername text-danger"></div>
+                        <div class="input-group form-group group-password">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key" style="color:orange"></i></span>
                             </div>
-                            <input type="password" class="form-control" placeholder="password" name="password" required>
+                            <input type="password" class="form-control password" placeholder="password" name="password">
+                            <button type="button" class="btn-showPass"><i class="far fa-eye"></i></button>
+
                         </div>
+                 
                        
                         <div class="form-group">
                            <button type="submit" class="btn btn-login">Đăng Nhập</button>
